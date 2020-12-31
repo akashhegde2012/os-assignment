@@ -1,0 +1,20 @@
+version : '3.3'
+
+services:
+  db:
+    image: mysql:8
+    ports:
+      - 3307:3306
+    restart: always
+    environment:
+       MYSQL_DATABASE: insta_db
+       MYSQL_USER: insta_admin
+       MYSQL_PASSWORD: insta2018
+     
+  pythonflask:
+    depends_on : 
+      - db 
+    build : .
+    ports:
+      - 5000:5000
+    
